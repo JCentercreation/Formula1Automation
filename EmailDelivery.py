@@ -3,8 +3,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def emaildelivery():
-    mailadress = ''
-    mailpassword = ''
+    mailadress = 'email'
+    mailpassword = 'password'
     s = smtplib.SMTP(host='smtp.gmail.com', port=587)
     s.starttls()
     s.login(mailadress, mailpassword)
@@ -18,7 +18,7 @@ def emaildelivery():
     file = open("Mensaje.txt", "r")
     msg = MIMEMultipart()
     msg['From'] = mailadress
-    msg['To'] = ''
+    msg['To'] = mailadress
     msg['Subject'] = str(messagestorage[0])
     message = file.read()
     msg.attach(MIMEText(message, 'plain'))
@@ -26,5 +26,3 @@ def emaildelivery():
     del msg
     s.quit()
     file.close()
-
-#Esto es un comentario
